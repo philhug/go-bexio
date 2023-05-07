@@ -139,13 +139,13 @@ type Tax struct {
 type InvoicePosition struct {
 	Id                  int64  `json:"id,omitempty"`
 	Amount              string `json:"amount,omitempty"`
-	Unit_id             int64  `json:"unit_id",omitempty"`
-	Account_id          int64  `json:"account_id",omitempty"`
-	Tax_id              int64  `json:"tax_id",omitempty"`
-	Text                string `json:"text",omitempty"`
-	Unit_price          string `json:"unit_price",omitempty"`
-	Discount_in_percent string `json:"discount_in_percent",omitempty"`
-	Article_id          int64  `json:"article_id",omitempty"`
+	Unit_id             int64  `json:"unit_id,omitempty"`
+	Account_id          int64  `json:"account_id,omitempty"`
+	Tax_id              int64  `json:"tax_id,omitempty"`
+	Text                string `json:"text,omitempty"`
+	Unit_price          string `json:"unit_price,omitempty"`
+	Discount_in_percent string `json:"discount_in_percent,omitempty"`
+	Article_id          int64  `json:"article_id,omitempty"`
 	Type                string `json:"type"`
 	Parent_id           int64  `json:"parent_id,omitempty"`
 }
