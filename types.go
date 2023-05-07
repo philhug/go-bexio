@@ -9,7 +9,8 @@ type ValidationError struct {
 }
 
 func (ve ValidationError) Error() string {
-	return ve.Message
+	err := string(ve.Errors)
+	return ve.Message + err
 }
 
 type Contact struct {

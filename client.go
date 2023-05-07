@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"net/url"
 )
@@ -109,10 +110,14 @@ func (c *Client) do(req *http.Request, v interface{}) (*http.Response, error) {
 		return nil, err
 	}
 	defer resp.Body.Close()
+	log.Println(resp.StatusCode)
 	switch resp.StatusCode {
 	case 422:
+		d, _ := ioutil.ReadAll(resp.Body)
+		buf := bytes.NewBuffer(d)
+		log.Println(string(d))
 		var ve ValidationError
-		if err = json.NewDecoder(resp.Body).Decode(&ve); err != nil {
+		if err = json.NewDecoder(buf).Decode(&ve); err != nil {
 			return resp, err
 		}
 		return resp, ve
@@ -124,7 +129,6 @@ func (c *Client) do(req *http.Request, v interface{}) (*http.Response, error) {
 		return resp, fmt.Errorf("Invalid response status code %d", resp.StatusCode)
 
 	}
-	fmt.Println(resp.StatusCode)
 	err = json.NewDecoder(resp.Body).Decode(v)
 	return resp, err
 }
