@@ -20,7 +20,7 @@ type Contact struct {
 	Name_2             string `json:"name_2"`
 	Salutation_id      int    `json:"salutation_id"`
 	Salutation_form    int    `json:"salutation_form"`
-	Title_id           string `json:"title_id"`
+	Title_id           int    `json:"title_id"`
 	Birthday           string `json:"birthday"`
 	Address            string `json:"address"`
 	Postcode           string `json:"postcode"`
